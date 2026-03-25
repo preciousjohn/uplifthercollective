@@ -2,9 +2,10 @@
 
 @media (max-width: 768px) {
 
-  /* Hero body copy: stack columns */
+  /* Hero body copy: stack columns, tighten padding */
   .hero-copy {
     grid-template-columns: 1fr !important;
+    padding: 3rem 0 4rem !important;
   }
 
   /* Character illustrations: 2 columns, remove border lines */
@@ -16,9 +17,19 @@
     border-top: 1px solid #66372E;
   }
 
-  /* Features: single column */
+  /* Features section: reduce padding + stack */
+  .features-section {
+    padding: 3rem 5vw !important;
+  }
   .features-grid {
     grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+  .features-grid h3 {
+    font-size: 20px !important;
+  }
+  .features-grid p {
+    font-size: 14px !important;
   }
 
   /* Global community: stack */
@@ -26,39 +37,141 @@
     grid-template-columns: 1fr !important;
   }
 
-  /* Circles & Tools: single column */
+  /* Circles & Tools: single column, reduce heading + gap */
   .circles-row,
   .tools-row {
     grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
+    gap: 1rem !important;
+  }
+  .circles-row h3,
+  .tools-row h3 {
+    font-size: 28px !important;
+  }
+  /* Body text in circles/tools (the Instrument Serif paragraph) */
+  .circles-row p,
+  .tools-row p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
   }
 
-  /* Ambitious collage: 2 columns per row */
+  /* Ambitious section: tighten padding, 2 columns */
+  .ambitious-section {
+    padding: 3rem 1rem !important;
+  }
   .ambitious-row {
     grid-template-columns: 1fr 1fr !important;
   }
+  .ambitious-row > * {
+    height: 130px !important;
+  }
+  .ambitious-row img {
+    height: 130px !important;
+    object-fit: cover !important;
+  }
 
-  /* World section: stack all 3 cols */
+  /* World section (mobile):
+     Map full-width → horizontally-scrollable timeline → headline text
+  */
   .world-grid {
     grid-template-columns: 1fr !important;
   }
+
+  /* 1. Map — full width on top */
   .world-map {
-    height: 320px !important;
-  }
-  .world-countries {
-    padding: 2rem 5vw !important;
-    justify-content: flex-start !important;
+    order: 1 !important;
+    height: 260px !important;
+    padding: 1.5rem 5vw !important;
   }
 
-  /* Footer nav: stack */
+  /* 2. Countries — scrollable horizontal timeline strip */
+  .world-countries {
+    order: 2 !important;
+    padding: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    /* Full-width horizontal timeline line */
+    border-top: 1px solid rgba(255, 219, 187, 0.5) !important;
+  }
+  .world-countries::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Inner wrapper: wide enough to scroll */
+  .world-countries-inner {
+    width: max-content !important;
+    position: relative !important;
+    padding: 0 5vw !important;
+  }
+
+  /* Hide the original desktop vertical line */
+  .world-countries-line {
+    display: none !important;
+  }
+
+  /* Country list: horizontal, no wrap (scroll instead) */
+  .world-countries-list {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    align-items: flex-start !important;
+    padding-top: 1.75rem !important;
+  }
+
+  /* Each country item: vertical tick above, name below */
+  .world-countries-list > div {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.5rem !important;
+    padding: 0 1.5rem !important;
+    position: relative !important;
+  }
+
+  /* Vertical tick dropping from horizontal line */
+  .world-countries-list > div::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -1.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 1.75rem;
+    background: rgba(255, 219, 187, 0.6);
+  }
+
+  /* Hide original horizontal desktop tick */
+  .world-countries-list > div > div {
+    display: none !important;
+  }
+
+  /* 3. Headline text — below timeline */
+  .world-left {
+    order: 3 !important;
+    grid-column: 1 !important;
+    padding: 1.5rem 5vw 2rem !important;
+  }
+  .world-left h2 {
+    font-size: clamp(18px, 4.5vw, 28px) !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .world-left p {
+    font-size: 13px !important;
+  }
+
+  /* Footer nav: stack, reorder so logo → year → nav links */
   .footer-nav {
     grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
+    gap: 1rem !important;
     text-align: center !important;
   }
-  .footer-nav > div {
-    justify-content: center !important;
-  }
+  .footer-nav > span { order: 2 !important; }   /* © year */
+  .footer-nav > div:first-of-type { order: 3 !important; } /* nav links */
+  .footer-nav > div:last-of-type { order: 1 !important; justify-content: center !important; } /* logo */
 
   /* Footer shapes: allow wrap */
   .footer-shapes {
@@ -67,13 +180,24 @@
 }
 
 @media (max-width: 480px) {
-  /* Ambitious collage: single column on very small screens */
+  /* Ambitious: keep 2 columns even on small phones */
   .ambitious-row {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .ambitious-row > * {
+    height: 110px !important;
+  }
+  .ambitious-row img {
+    height: 110px !important;
   }
 
   /* Char grid: single column */
   .char-grid {
     grid-template-columns: 1fr !important;
+  }
+
+  /* World: reduce map height on tiny screens */
+  .world-map {
+    height: 210px !important;
   }
 }

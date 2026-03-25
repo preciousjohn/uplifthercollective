@@ -5,7 +5,7 @@ import './Landing.css';
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const CORAL      = '#FD8852';
 const CREAM      = '#F2EDE6';
-const DARK_BROWN = '#211008';
+const DARK_BROWN = '#3C1B0C';
 const WARM_GREY  = '#EAE3DA';
 
 const h1 = (extra?: React.CSSProperties): React.CSSProperties => ({
@@ -210,8 +210,9 @@ export default function Landing() {
       {/* ══════════════════════════════════════════════════
           2. FEATURES — dark brown section
       ══════════════════════════════════════════════════ */}
-      <section style={{ background: DARK_BROWN, padding: '120px 5vw' }}>
+      <section className="features-section" style={{ background: DARK_BROWN, padding: '120px 5vw' }}>
         <div
+          className="features-grid"
           style={{
             maxWidth: '1400px',
             margin: '0 auto',
@@ -249,6 +250,7 @@ export default function Landing() {
       ══════════════════════════════════════════════════ */}
       <section style={{ background: '#E9F1F7', padding: '6rem 5vw' }}>
         <div
+          className="community-grid"
           style={{
             maxWidth: '1800px',
             margin: '0 auto',
@@ -340,7 +342,7 @@ export default function Landing() {
                 fontFamily: '"Archivo Narrow", sans-serif',
                 fontSize: '44px',
                 fontWeight: 700,
-                color: '#1A1A1A',
+                color: '#3C1B0C',
                 margin: 0,
                 paddingTop: '3px',
               }}
@@ -353,7 +355,7 @@ export default function Landing() {
                   fontFamily: '"Instrument Serif", serif',
                   fontSize: '32px',
                   lineHeight: 1.4,
-                  color: '#1A1A1A',
+                  color: '#3C1B0C',
                   marginBottom: '0.75rem',
                 }}
               >
@@ -383,7 +385,7 @@ export default function Landing() {
                 fontFamily: '"Archivo Narrow", sans-serif',
                 fontSize: '44px',
                 fontWeight: 700,
-                color: '#1A1A1A',
+                color: '#3C1B0C',
                 margin: 0,
                 paddingTop: '3px',
               }}
@@ -396,7 +398,7 @@ export default function Landing() {
                   fontFamily: '"Instrument Serif", serif',
                   fontSize: '32px',
                   lineHeight: 1.4,
-                  color: '#1A1A1A',
+                  color: '#3C1B0C',
                   marginBottom: '0.75rem',
                 }}
               >
@@ -417,7 +419,7 @@ export default function Landing() {
       {/* ══════════════════════════════════════════════════
           6. BUILT FOR THE AMBITIOUS — photo/text collage
       ══════════════════════════════════════════════════ */}
-      <section style={{ background: CREAM, gap: '3px', display: 'flex', flexDirection: 'column', padding: '120px'}}>
+      <section className="ambitious-section" style={{ background: CREAM, gap: '3px', display: 'flex', flexDirection: 'column', padding: '120px'}}>
         {/* Row 1 */}
         <div className="ambitious-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '3px' }}>
           <img src={AMB('Rectangle 11.png')} alt="" style={imgCell()} />
@@ -466,7 +468,7 @@ export default function Landing() {
         <div className="world-grid" style={{ display: 'grid', gridTemplateColumns: '40% 35% 25%', minHeight: '520px', alignItems: 'center' }}>
 
           {/* Left — headline + body */}
-          <div style={{ padding: '5rem 4rem 5rem 5vw' }}>
+          <div className="world-left" style={{ padding: '5rem 4rem 5rem 5vw' }}>
             <h2
               style={{
                 fontFamily: '"Instrument Serif", serif',
@@ -497,11 +499,11 @@ export default function Landing() {
           </div>
 
           {/* Right — country index */}
-          <div style={{ padding: '5rem 5vw 5rem 2rem', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-            <div style={{ position: 'relative' }}>
+          <div className="world-countries" style={{ padding: '5rem 5vw 5rem 2rem', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+            <div className="world-countries-inner" style={{ position: 'relative' }}>
               {/* Vertical line */}
-              <div style={{ position: 'absolute', right: '-20px', top: 0, bottom: 0, width: '1px', background: '#FFDBBB', opacity: 0.50 }} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+              <div className="world-countries-line" style={{ position: 'absolute', right: '-20px', top: 0, bottom: 0, width: '1px', background: '#FFDBBB', opacity: 0.50 }} />
+              <div className="world-countries-list" style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
                 {['India', 'Rwanda', 'Nigeria', 'Spain'].map((country) => {
                   const active = country === selectedCountry;
                   return (

@@ -1,73 +1,52 @@
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import './Navbar.css';
 
 export default function Navbar() {
   const { pathname } = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const links = [
+    { label: 'About', href: '/#about' },
+    { label: 'Approach', href: '/#approach' },
+    { label: 'Resources', href: '/resources' },
+  ];
 
   return (
-    <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        background: '#F2EDE6',
-        borderBottom: '1px solid #E4DDD5',
-      }}
-    >
-      <div
-        style={{
-          maxWidth: '1400px',
-          margin: '0 auto',
-          padding: '0 5vw',
-          height: '56px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
+    <header className="navbar">
+      <div className="navbar-inner">
         {/* Logo */}
-        <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+        <Link to="/" className="navbar-logo">
           <img src="/logo nav.svg" alt="UpliftHer" style={{ height: '22px' }} />
         </Link>
 
-        {/* Nav links */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-          {[
-            { label: 'About', href: '/#about' },
-            { label: 'Approach', href: '/#approach' },
-            { label: 'Resources', href: '/resources' },
-          ].map(({ label, href }) => (
+        {/* Nav links (desktop always visible; mobile toggles via .open) */}
+        <nav className={`navbar-links${menuOpen ? ' open' : ''}`}>
+          {links.map(({ label, href }) => (
             <Link
               key={label}
               to={href}
-              style={{
-                fontSize: '0.82rem',
-                fontWeight: 500,
-                color: '#3A2A20',
-                textDecoration: 'none',
-                fontFamily: '"Instrument Sans", sans-serif',
-                opacity: pathname === href ? 1 : 0.7,
-              }}
+              className={`navbar-link${pathname === href ? ' active' : ''}`}
+              onClick={() => setMenuOpen(false)}
             >
               {label}
             </Link>
           ))}
-
-          <Link
-            to="/discover"
-            style={{
-              fontSize: '0.8rem',
-              fontWeight: 600,
-              color: '#F2EDE6',
-              background: '#211008',
-              padding: '0.45rem 1.1rem',
-              borderRadius: '999px',
-              textDecoration: 'none',
-              fontFamily: '"Instrument Sans", sans-serif',
-            }}
-          >
+          <Link to="/discover" className="navbar-cta" onClick={() => setMenuOpen(false)}>
             Get started
           </Link>
         </nav>
+
+        {/* Hamburger button — hidden on desktop, visible on mobile via CSS */}
+        <button
+          className={`navbar-burger${menuOpen ? ' open' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
     </header>
   );
