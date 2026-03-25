@@ -1,0 +1,79 @@
+/* ── Mobile responsiveness for Landing page ────────────────────────── */
+
+@media (max-width: 768px) {
+
+  /* Hero body copy: stack columns */
+  .hero-copy {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Character illustrations: 2 columns, remove border lines */
+  .char-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .char-grid > div {
+    border-left: none !important;
+    border-top: 1px solid #66372E;
+  }
+
+  /* Features: single column */
+  .features-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Global community: stack */
+  .community-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Circles & Tools: single column */
+  .circles-row,
+  .tools-row {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Ambitious collage: 2 columns per row */
+  .ambitious-row {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* World section: stack all 3 cols */
+  .world-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .world-map {
+    height: 320px !important;
+  }
+  .world-countries {
+    padding: 2rem 5vw !important;
+    justify-content: flex-start !important;
+  }
+
+  /* Footer nav: stack */
+  .footer-nav {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    text-align: center !important;
+  }
+  .footer-nav > div {
+    justify-content: center !important;
+  }
+
+  /* Footer shapes: allow wrap */
+  .footer-shapes {
+    height: 80px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ambitious collage: single column on very small screens */
+  .ambitious-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Char grid: single column */
+  .char-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

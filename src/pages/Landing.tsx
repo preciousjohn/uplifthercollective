@@ -48,17 +48,17 @@ const FEATURES = [
   {
     icon: '/icons/mdi_shape.svg',
     title: 'Discover',
-    desc: 'We ask questions to know you better. A reflection designed to surface what actually moves you and open doors to the careers you didn\'t know existed.',
+    desc: 'We get to know you better. A reflection designed to surface what moves you and open doors .',
   },
   {
     icon: '/icons/gg_shape-hexagon.svg',
     title: 'AI Matching',
-    desc: 'Personalised matching to tools, resources or funding opportunities for your specific career path. We make sure you get ahead.',
+    desc: 'Personalised matching to tools, resources or funding opportunities. We take you a step ahead.',
   },
   {
     icon: '/icons/streamline_spiral-shape-solid.svg',
     title: 'Access',
-    desc: "Expert guides, career roadmaps, toolkits built for girls who don't have a family network in the industry or a school that tells them what's possible.",
+    desc: "Expert guides, career roadmaps, toolkits built for girls interest in specific industries or roles",
   },
 ];
 
@@ -208,14 +208,14 @@ export default function Landing() {
       {/* ══════════════════════════════════════════════════
           2. FEATURES — dark brown section
       ══════════════════════════════════════════════════ */}
-      <section style={{ background: DARK_BROWN, padding: '140px 5vw' }}>
+      <section style={{ background: DARK_BROWN, padding: '120px 5vw' }}>
         <div
           style={{
-            maxWidth: '1100px',
+            maxWidth: '1400px',
             margin: '0 auto',
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '3rem',
+            gap: '10px',
           }}
         >
           {FEATURES.map(({ icon, title, desc }) => (
@@ -223,7 +223,7 @@ export default function Landing() {
               <img
                 src={icon}
                 alt={title}
-                style={{ width: '80px', height: '80px', margin: '0 auto 1.25rem', filter: 'brightness(0) invert(1) opacity(0.6) sepia(1) saturate(3) hue-rotate(10deg)' }}
+                style={{ width: '80px', height: '80px', margin: '0 auto 1.25rem' }}
               />
               <h3
                 style={{
@@ -236,7 +236,7 @@ export default function Landing() {
               >
                 {title}
               </h3>
-              <p style={{ ...bodyText, color: '#8A7060', fontSize: '18px' }}>{desc}</p>
+              <p style={{ ...bodyText, color: '#8A7060', fontSize: '16px' }}>{desc}</p>
             </div>
           ))}
         </div>
