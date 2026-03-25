@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import './Landing.css';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const CORAL      = '#FD8852';
@@ -121,13 +122,13 @@ export default function Landing() {
 
         {/* ── Two-column body copy ─────────────────────────────── */}
         <div
+          className="hero-copy"
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: 'clamp(2rem, 5vw, 5rem)',
             alignItems: 'start',
-            padding: '3rem 0 3rem',
-            borderTop: '1px solid #DDD5CA',
+            padding: '6rem 0 8rem',
             marginTop: '2.5rem',
           }}
         >
@@ -158,6 +159,7 @@ export default function Landing() {
 
         {/* ── Character illustrations ──────────────────────────── */}
         <div
+          className="char-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(5, 1fr)',
@@ -169,7 +171,7 @@ export default function Landing() {
               key={label}
               style={{
                 padding: '2rem 1rem 1.5rem',
-                borderLeft: i > 0 ? '1px solid #66372E' : 'none',
+                borderLeft: i > 0 ? '1px solid #DDD5CA' : 'none',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
@@ -191,11 +193,11 @@ export default function Landing() {
         <div
           style={{
 
-            padding: '2.5rem 0 2.5rem',
+            padding: '4.5rem 0 4.5rem',
             textAlign: 'center',
           }}
         >
-          <p style={{ fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#B0A090', marginBottom: '1rem' }}>
+          <p style={{ fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#B0A090', marginBottom: '2rem' }}>
             Supported by
           </p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3.5rem', flexWrap: 'wrap' }}>
@@ -215,7 +217,7 @@ export default function Landing() {
             margin: '0 auto',
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '10px',
+            gap: '20px',
           }}
         >
           {FEATURES.map(({ icon, title, desc }) => (
@@ -230,13 +232,13 @@ export default function Landing() {
                   fontFamily: '"Archivo Narrow", sans-serif',
                   fontSize: '26px',
                   fontWeight: 700,
-                  color: '#C8A070',
+                  color: '#FFDBBB',
                   marginBottom: '0.75rem',
                 }}
               >
                 {title}
               </h3>
-              <p style={{ ...bodyText, color: '#8A7060', fontSize: '16px' }}>{desc}</p>
+              <p style={{ ...bodyText, color: '#FFDBBB', fontSize: '16px' }}>{desc}</p>
             </div>
           ))}
         </div>
@@ -245,10 +247,10 @@ export default function Landing() {
       {/* ══════════════════════════════════════════════════
           3. GLOBAL COMMUNITY
       ══════════════════════════════════════════════════ */}
-      <section style={{ background: WARM_GREY, padding: '6rem 5vw' }}>
+      <section style={{ background: '#E9F1F7', padding: '6rem 5vw' }}>
         <div
           style={{
-            maxWidth: '1200px',
+            maxWidth: '1800px',
             margin: '0 auto',
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
@@ -262,7 +264,6 @@ export default function Landing() {
                 fontFamily: '"Instrument Serif", serif',
                 fontSize: 'clamp(20px, 2.4vw, 38px)',
                 lineHeight: 1.3,
-                color: '#1A1A1A',
                 marginBottom: '2.5rem',
               }}
             >
@@ -324,6 +325,7 @@ export default function Landing() {
 
           {/* Circles row */}
           <div
+            className="circles-row"
             style={{
               display: 'grid',
               gridTemplateColumns: '400px 1fr',
@@ -367,6 +369,7 @@ export default function Landing() {
 
           {/* Tools row */}
           <div
+            className="tools-row"
             style={{
               display: 'grid',
               gridTemplateColumns: '400px 1fr',
@@ -416,7 +419,7 @@ export default function Landing() {
       ══════════════════════════════════════════════════ */}
       <section style={{ background: CREAM, gap: '3px', display: 'flex', flexDirection: 'column', padding: '120px'}}>
         {/* Row 1 */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '3px' }}>
+        <div className="ambitious-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '3px' }}>
           <img src={AMB('Rectangle 11.png')} alt="" style={imgCell()} />
           <div style={textCell()}>
             <span style={bigWord(DARK_BROWN)}>Built</span>
@@ -426,9 +429,9 @@ export default function Landing() {
         </div>
 
         {/* Row 2 */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '3px' }}>
-          <img src={AMB('Rectangle 14.png')} alt="" style={imgCell()} />
-          <img src={AMB('Rectangle 16.png')} alt="" style={imgCell()} />
+        <div className="ambitious-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '3px' }}>
+          <img src={AMB('rec001.png')} alt="" style={imgCell()} />
+          <img src={AMB('rec002.png')} alt="" style={imgCell()} />
           <div style={textCell()}>
             <span style={bigWord(DARK_BROWN)}>for</span>
           </div>
@@ -436,7 +439,7 @@ export default function Landing() {
         </div>
 
         {/* Row 3 */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '3px' }}>
+        <div className="ambitious-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '3px' }}>
           <img src={AMB('Rectangle 23-1.png')} alt="" style={imgCell()} />
           <div style={textCell()}>
             <span style={bigWord(DARK_BROWN)}>the</span>
@@ -446,7 +449,7 @@ export default function Landing() {
         </div>
 
         {/* Row 4 */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '3px' }}>
+        <div className="ambitious-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '3px' }}>
           <img src={AMB('Rectangle 23.png')} alt="" style={imgCell()} />
           <img src={AMB('Rectangle 25.png')} alt="" style={imgCell()} />
           <div style={textCell()}>
@@ -460,7 +463,7 @@ export default function Landing() {
           7. WORLD / GLOBAL SECTION
       ══════════════════════════════════════════════════ */}
       <section style={{ background: '#0E3626', overflow: 'hidden' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '40% 35% 25%', minHeight: '520px', alignItems: 'center' }}>
+        <div className="world-grid" style={{ display: 'grid', gridTemplateColumns: '40% 35% 25%', minHeight: '520px', alignItems: 'center' }}>
 
           {/* Left — headline + body */}
           <div style={{ padding: '5rem 4rem 5rem 5vw' }}>
@@ -484,7 +487,7 @@ export default function Landing() {
           </div>
 
           {/* Center — line-art map (single selected country, large) */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '640px', padding: '0' }}>
+          <div className="world-map" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '640px', padding: '0' }}>
             {COUNTRY_MAP[selectedCountry] && (
               <CountryMap
                 src={COUNTRY_MAP[selectedCountry]!}
@@ -537,6 +540,7 @@ export default function Landing() {
       <footer style={{ background: CREAM, paddingTop: '5rem', position: 'relative', overflow: 'hidden' }}>
         {/* Top row nav */}
         <div
+          className="footer-nav"
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr 1fr',
@@ -563,7 +567,7 @@ export default function Landing() {
         </div>
 
         {/* Decorative shapes — tops only, cropped by overflow hidden */}
-        <div style={{ display: 'flex', alignItems: 'flex-start', height: '120px', overflow: 'hidden' }}>
+        <div className="footer-shapes" style={{ display: 'flex', alignItems: 'flex-start', height: '120px', overflow: 'hidden' }}>
           {/* Shape 1 — rounded-top rectangle */}
           <div style={{
             flex: '0 0 38%',
@@ -580,9 +584,10 @@ export default function Landing() {
             borderRadius: '10px 10px 0 0',
             flexShrink: 0,
           }} />
-          {/* Shape 3 — circle: height matches flex-1 width via vw so it stays circular */}
+          {/* Shape 3 — circle: large enough that curvature fills width, negative margin closes gap */}
           <div style={{
-            flex: '1',
+            flex: '0 0 calc(34% + 40px)',
+            marginLeft: '-40px',
             height: '34vw',
             background: '#FF663D',
             borderRadius: '50%',
