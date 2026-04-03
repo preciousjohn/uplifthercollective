@@ -2,7 +2,6 @@ import { useEffect, useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { PathwayId, Resource, ResourceType } from '../types';
 import { fetchAllResources } from '../lib/queries';
-import { isSupabaseConfigured } from '../lib/supabase';
 import DashboardNav from '../components/dashboard/DashboardNav';
 import ResourceCard from '../components/resources/ResourceCard';
 import FilterBar from '../components/resources/FilterBar';
@@ -23,11 +22,6 @@ export default function Resources() {
   const [activeType, setActiveType] = useState<ResourceType | 'all'>('all');
 
   useEffect(() => {
-    if (!isSupabaseConfigured) {
-      setError('supabase-not-configured');
-      setLoading(false);
-      return;
-    }
     fetchAllResources()
       .then(setResources)
       .catch((err) => setError(err.message ?? 'Failed to load resources.'))
@@ -78,21 +72,8 @@ export default function Resources() {
         </div>
       )}
 
-      {/* Not configured */}
-      {error === 'supabase-not-configured' && (
-        <div className="bg-amber-50 border border-amber-200 rounded-2xl px-6 py-8 text-center">
-          <p className="text-2xl mb-3">🔧</p>
-          <p className="font-display font-bold text-gray-900 mb-2">Supabase not connected yet</p>
-          <p className="text-gray-500 text-sm max-w-md mx-auto">
-            Add your <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">VITE_SUPABASE_URL</code> and{' '}
-            <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">VITE_SUPABASE_ANON_KEY</code> to your{' '}
-            <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">.env</code> file, then run the SQL seed to populate resources.
-          </p>
-        </div>
-      )}
-
       {/* Error */}
-      {error && error !== 'supabase-not-configured' && (
+      {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 rounded-2xl px-6 py-5 text-sm">
           <strong>Couldn't load resources:</strong> {error}
         </div>
