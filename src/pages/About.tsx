@@ -61,7 +61,7 @@ export default function About() {
             margin: '0 0 5rem',
           }}
         >
-          We're designers, builders, and problem-solvers who got tired of watching talent go unseen.
+          We're designers, builders, and problem-solvers who want to help create a path for young women around the world.
           We built UpliftHer because the resources exist but the bridge to them didn't, especially
           for girls/women in underserved communities.
         </p>
@@ -106,12 +106,7 @@ export default function About() {
                 style={{ display: 'inline-block', marginBottom: '0.75rem', lineHeight: 1 }}
                 aria-label={`${name} LinkedIn`}
               >
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="24" height="24" rx="4" fill="#0A66C2"/>
-                  <path d="M7.5 9.5H5V18H7.5V9.5Z" fill="white"/>
-                  <circle cx="6.25" cy="6.75" r="1.5" fill="white"/>
-                  <path d="M13 13.25C13 12.01 13.99 11 15.25 11C16.51 11 17.5 12.01 17.5 13.25V18H20V13.25C20 10.63 17.87 8.5 15.25 8.5C13.73 8.5 12.37 9.19 11.5 10.27V9.5H9V18H11.5V13.25H13Z" fill="white"/>
-                </svg>
+                <img src="/linkedin.svg" alt="LinkedIn" width="26" height="26" />
               </a>
 
               {/* Role */}
