@@ -39,6 +39,27 @@ export interface DiscoveryQuestion {
 /** questionId → selected option label */
 export type UserAnswers = Record<number, string>;
 
+export interface PathwayScore {
+  id: PathwayId;
+  score: number;
+  rank: number;
+}
+
+export interface CourseResult {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  photoUrl: string;
+}
+
+export interface VideoResult {
+  videoId: string;
+  title: string;
+  channelTitle: string;
+  thumbnail: string;
+}
+
 export interface PathwayResult {
   id: string;
   rank: number;

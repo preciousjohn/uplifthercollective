@@ -1,17 +1,26 @@
 import { useEffect, useState, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { PathwayId, Resource, ResourceType } from '../types';
 import { fetchAllResources } from '../lib/queries';
 import { isSupabaseConfigured } from '../lib/supabase';
+import DashboardNav from '../components/dashboard/DashboardNav';
 import ResourceCard from '../components/resources/ResourceCard';
 import FilterBar from '../components/resources/FilterBar';
 
+const VALID_PATHWAYS: PathwayId[] = ['tech', 'business', 'creative', 'health', 'social'];
+
 export default function Resources() {
+  const [searchParams] = useSearchParams();
+  const paramPathway = searchParams.get('pathway') as PathwayId | null;
+
   const [resources, setResources] = useState<Resource[]>([]);
   const [loading, setLoading]     = useState(true);
   const [error, setError]         = useState<string | null>(null);
 
-  const [activePathway, setActivePathway] = useState<PathwayId | 'all'>('all');
-  const [activeType, setActiveType]       = useState<ResourceType | 'all'>('all');
+  const [activePathway, setActivePathway] = useState<PathwayId | 'all'>(
+    paramPathway && VALID_PATHWAYS.includes(paramPathway) ? paramPathway : 'all'
+  );
+  const [activeType, setActiveType] = useState<ResourceType | 'all'>('all');
 
   useEffect(() => {
     if (!isSupabaseConfigured) {
@@ -33,18 +42,20 @@ export default function Resources() {
     });
   }, [resources, activePathway, activeType]);
 
+  const firstName = localStorage.getItem('uhc_first_name') ?? '';
+
   return (
+    <div style={{ background: '#FAFAFA', minHeight: '100vh' }}>
+      <DashboardNav firstName={firstName} showBack />
     <div className="max-w-6xl mx-auto px-4 py-16">
       {/* Header */}
       <div className="mb-12">
         <h1 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-          The toolkit.
+          {(() => {
+            const name = localStorage.getItem('uhc_first_name');
+            return name ? `Your space, ${name}` : 'Your space';
+          })()}
         </h1>
-        <p className="text-gray-500 text-lg max-w-2xl leading-relaxed">
-          No fluff. Every resource here is free or accessible — built for girls who don't have a
-          trust fund, a family network in the industry, or a school that teaches this stuff.
-          Filter by what matters to you.
-        </p>
       </div>
 
       {/* Filters */}
@@ -115,6 +126,7 @@ export default function Resources() {
           </button>
         </div>
       )}
+    </div>
     </div>
   );
 }

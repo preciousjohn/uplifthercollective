@@ -37,13 +37,13 @@ const pill = (bg = DARK_BROWN): React.CSSProperties => ({
 });
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
-const CHARACTERS = [
-  { label: 'Founder',      src: '/founder.svg' },
-  { label: 'Board Leader', src: '/board.svg' },
-  { label: 'Engineer',     src: '/engineer.svg' },
-  { label: 'Filmmaker',    src: '/filmaker.svg' },
-  { label: 'Researcher',   src: '/researcher.svg' },
-];
+// const CHARACTERS = [
+//   { label: 'Founder',      src: '/founder.svg' },
+//   { label: 'Board Leader', src: '/board.svg' },
+//   { label: 'Engineer',     src: '/engineer.svg' },
+//   { label: 'Filmmaker',    src: '/filmaker.svg' },
+//   { label: 'Researcher',   src: '/researcher.svg' },
+// ];
 
 const FEATURES = [
   {
@@ -101,7 +101,7 @@ export default function Landing() {
           }}
         >
           <img
-            src="/heroimg.png"
+            src="/newheroim.jpg"
             alt="UpliftHer community"
             style={{
               width: 'clamp(260px, 50%, 780px)',
@@ -158,7 +158,7 @@ export default function Landing() {
         </div>
 
         {/* ── Character illustrations ──────────────────────────── */}
-        <div
+        {/* <div
           className="char-grid"
           style={{
             display: 'grid',
@@ -187,7 +187,7 @@ export default function Landing() {
               />
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* ── Supported by ────────────────────────────────────── */}
         <div
@@ -322,7 +322,7 @@ export default function Landing() {
       {/* ══════════════════════════════════════════════════
           5. CIRCLES & TOOLS
       ══════════════════════════════════════════════════ */}
-      <section style={{ background: CREAM, padding: '0 5vw' }}>
+      <section id="circles" style={{ background: CREAM, padding: '0 5vw' }}>
         <div>
 
           {/* Circles row */}

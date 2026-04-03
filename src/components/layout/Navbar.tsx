@@ -1,43 +1,53 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const links = [
-    { label: 'About', href: '/#about' },
-    { label: 'Approach', href: '/#approach' },
-    { label: 'Resources', href: '/resources' },
-  ];
+  function scrollToCircles() {
+    setMenuOpen(false);
+    const doScroll = () => {
+      const el = document.getElementById('circles');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    };
+    if (pathname === '/') {
+      doScroll();
+    } else {
+      navigate('/');
+      setTimeout(doScroll, 300);
+    }
+  }
 
   return (
     <header className="navbar">
       <div className="navbar-inner">
-        {/* Logo */}
         <Link to="/" className="navbar-logo">
           <img src="/logo nav.svg" alt="UpliftHer" style={{ height: '22px' }} />
         </Link>
 
-        {/* Nav links (desktop always visible; mobile toggles via .open) */}
         <nav className={`navbar-links${menuOpen ? ' open' : ''}`}>
-          {links.map(({ label, href }) => (
-            <Link
-              key={label}
-              to={href}
-              className={`navbar-link${pathname === href ? ' active' : ''}`}
-              onClick={() => setMenuOpen(false)}
-            >
-              {label}
-            </Link>
-          ))}
+          <Link
+            to="/about"
+            className={`navbar-link${pathname === '/about' ? ' active' : ''}`}
+            onClick={() => setMenuOpen(false)}
+          >
+            About
+          </Link>
+          <button
+            className="navbar-link"
+            onClick={scrollToCircles}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+          >
+            Approach
+          </button>
           <Link to="/discover" className="navbar-cta" onClick={() => setMenuOpen(false)}>
             Get started
           </Link>
         </nav>
 
-        {/* Hamburger button — hidden on desktop, visible on mobile via CSS */}
         <button
           className={`navbar-burger${menuOpen ? ' open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
